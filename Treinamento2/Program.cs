@@ -20,6 +20,8 @@ namespace Treinamento2
                     mat[i, j] = int.Parse(valores[j]);
                 }
             }
+            //Alteração
+
         }
     }
 }
