@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
+using Treinamento2.Enuns;
 
 namespace Treinamento2
 {
@@ -78,7 +79,7 @@ namespace Treinamento2
             Console.WriteLine("Departamento: "+ trabalhador.Departamento.Nome);
             Console.WriteLine("Ganho total: "+ trabalhador.Income(ano, mes));*/
 
-            List<Product> list = new List<Product>();
+            /*List<Product> list = new List<Product>();
 
             Console.WriteLine("Enter the number of products: ");
             int n = int.Parse(Console.ReadLine());
@@ -114,6 +115,42 @@ namespace Treinamento2
             foreach (Product prod in list)
             {
                 Console.WriteLine(prod.PriceTag());
+            }*/
+
+            List<Shape> list = new List<Shape>();
+
+            Console.WriteLine("Enter the number of shapes: ");
+            int n = int.Parse(Console.ReadLine());
+
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"Shape #{i} data:");
+                Console.WriteLine("Rectangle or Circle (r/c)? ");
+                char ch = char.Parse(Console.ReadLine());
+                Console.WriteLine("Color (Black/Blue/Red): ");
+                Color color = Enum.Parse<Color>(Console.ReadLine());
+
+                if(ch == 'r')
+                {
+                    Console.WriteLine("Wigth: ");
+                    double wigth = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    Console.WriteLine("Heigth: ");
+                    double heigth = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    list.Add(new Rectangle(wigth, heigth, color));
+                }
+                else
+                {
+                    Console.WriteLine("Radius: ");
+                    double radius = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                    list.Add(new Circle(radius, color));
+                }
+            }
+            Console.WriteLine();
+            Console.WriteLine("SHAPE AREAS:");
+            foreach (Shape shape in list)
+            {
+                Console.WriteLine(shape.Area().ToString("F2", CultureInfo.InvariantCulture));
+
             }
         }
 
