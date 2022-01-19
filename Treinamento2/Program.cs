@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Collections.Generic;
 using Treinamento2.Enuns;
+using Treinamento2.Exceptions;
 
 namespace Treinamento2
 {
@@ -117,7 +118,7 @@ namespace Treinamento2
                 Console.WriteLine(prod.PriceTag());
             }*/
 
-            List<Shape> list = new List<Shape>();
+            /*List<Shape> list = new List<Shape>();
 
             Console.WriteLine("Enter the number of shapes: ");
             int n = int.Parse(Console.ReadLine());
@@ -151,6 +152,32 @@ namespace Treinamento2
             {
                 Console.WriteLine(shape.Area().ToString("F2", CultureInfo.InvariantCulture));
 
+            }*/
+
+            Console.WriteLine("Enter account data: ");
+            Console.WriteLine("Number: ");
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine("Holder: ");
+            string holder = Console.ReadLine();
+            Console.WriteLine("Balance: ");
+            double balance = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.WriteLine("WithdrawLimit: ");
+            double withdrawLimit = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Account account = new Account(number, holder, balance, withdrawLimit);
+
+            Console.WriteLine();
+            Console.WriteLine("Enter amount for withdraw: ");
+            double amount = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            try
+            {
+                account.Withdraw(amount);
+                Console.WriteLine("New balance: "+ account.Balance.ToString("F2", CultureInfo.InvariantCulture));
+            }
+            catch (DomainException e)
+            {
+                Console.WriteLine("Withdraw error: "+ e.Message);
             }
         }
 
