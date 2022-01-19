@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Treinamento2
 {
-    class Class1
+    class Exercicios
     {
         static void Main(string[] args)
         {
